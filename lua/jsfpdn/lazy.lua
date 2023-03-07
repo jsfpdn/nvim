@@ -6,6 +6,7 @@
 --  * https://github.com/theHamsta/nvim-dap-virtual-text
 
 require("lazy").setup({
+  "ryanoasis/vim-devicons",
   "lewis6991/impatient.nvim",
   "folke/which-key.nvim",
   "folke/neodev.nvim",
