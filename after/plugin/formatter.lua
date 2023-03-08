@@ -19,4 +19,3 @@ require("formatter").setup({
         ["*"] = {require("formatter.filetypes.any").remove_trailing_whitespace}
     }
 })
-
