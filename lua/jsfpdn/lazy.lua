@@ -14,7 +14,21 @@ require("lazy").setup({
     "lewis6991/gitsigns.nvim",
     "dnlhc/glance.nvim",
     "mbbill/undotree",
-    {"catppuccin/nvim", name = "catppuccin"},
+    {
+        "catppuccin/nvim",
+        name = "catppuccin"
+    },
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make"
+    },
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim"
+        }
+    },
     {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = {
