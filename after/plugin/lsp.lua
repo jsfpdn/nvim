@@ -72,3 +72,4 @@ vim.diagnostic.config({
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
 require"lspconfig".clangd.setup {}
 require"lspconfig".gopls.setup {}
+-- require"lspconfig".yamlls.setup {}

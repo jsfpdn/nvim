@@ -13,6 +13,7 @@ require("lazy").setup({
     "mhartington/formatter.nvim",
     "lewis6991/gitsigns.nvim",
     "dnlhc/glance.nvim",
+    "towolf/vim-helm",
     "mbbill/undotree",
     {
         "catppuccin/nvim",
