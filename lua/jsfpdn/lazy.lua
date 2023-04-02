@@ -15,14 +15,12 @@ require("lazy").setup({
     "dnlhc/glance.nvim",
     "towolf/vim-helm",
     "mbbill/undotree",
+    "arcticicestudio/nord-vim",
     {
-        "catppuccin/nvim",
-        name = "catppuccin"
+        "nvim-lualine/lualine.nvim",
+        requires = {"nvim-tree/nvim-web-devicons", opt = true}
     },
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        run = "make"
-    },
+    {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
     {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = {

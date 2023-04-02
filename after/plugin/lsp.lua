@@ -7,15 +7,8 @@ lsp.preset("recommended")
 lsp.nvim_workspace()
 
 lsp.ensure_installed({
-    "gopls",
-    "lua_ls",
-    "jsonls",
-    "marksman",
-    "yamlls",
-    "zls",
-    "bashls",
-    "clangd",
-    "rust_analyzer"
+    "gopls", "lua_ls", "jsonls", "marksman", "yamlls", "zls", "bashls",
+    "clangd", "rust_analyzer"
 })
 
 local cmp = require("cmp")
@@ -69,7 +62,23 @@ vim.diagnostic.config({
     underline = true
 })
 
+local configs = require('lspconfig.configs')
+local util = require('lspconfig.util')
+
+if not configs.helm_ls then
+    configs.helm_ls = {
+        default_config = {
+            cmd = {"helm_ls", "serve"},
+            filetypes = {'helm'},
+            root_dir = function(fname)
+                return util.root_pattern('Chart.yaml')(fname)
+            end
+        }
+    }
+end
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
-require"lspconfig".clangd.setup {}
-require"lspconfig".gopls.setup {}
--- require"lspconfig".yamlls.setup {}
+config.clangd.setup {}
+config.gopls.setup {}
+config.helm_ls.setup {filetypes = {"helm"}, cmd = {"helm_ls", "serve"}}
+config.yamlls.setup {filetypes = {"yaml", "yml"}}
