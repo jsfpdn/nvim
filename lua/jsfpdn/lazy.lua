@@ -16,6 +16,8 @@ require("lazy").setup({
     "towolf/vim-helm",
     "mbbill/undotree",
     "arcticicestudio/nord-vim",
+    "tpope/vim-fugitive",
+    "lervag/vimtex",
     {
         "nvim-lualine/lualine.nvim",
         requires = {"nvim-tree/nvim-web-devicons", opt = true}

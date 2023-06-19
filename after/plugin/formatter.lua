@@ -7,12 +7,12 @@ require("formatter").setup({
     filetype = {
         go = {require("formatter.filetypes.go").gofumpt},
         zig = {require("formatter.filetypes.zig").zigfmt},
-        haskell = {require("formatter.filetypes.haskell").stylish_haskell},
         json = {require("formatter.filetypes.json").jq},
         markdown = {require("formatter.filetypes.markdown").prettier},
         yaml = {require("formatter.filetypes.yaml").yamlfmt},
         sh = {require("formatter.filetypes.sh").shfmt},
         lua = {require("formatter.filetypes.lua").luaformat},
+        haskell = {function() return {exe = "hindent"} end},
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype

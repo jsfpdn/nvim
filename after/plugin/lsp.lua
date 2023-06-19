@@ -4,11 +4,9 @@ local config = require("lspconfig")
 
 lsp.preset("recommended")
 
-lsp.nvim_workspace()
-
 lsp.ensure_installed({
     "gopls", "lua_ls", "jsonls", "marksman", "yamlls", "zls", "bashls",
-    "clangd", "rust_analyzer"
+    "clangd", "rust_analyzer", "hls"
 })
 
 local cmp = require("cmp")
@@ -51,9 +49,6 @@ lsp.on_attach(function(client, bufnr)
                    function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-config.zls.setup({})
-lsp.setup()
-
 vim.diagnostic.config({
     virtual_text = true,
     signs = true,
@@ -62,23 +57,13 @@ vim.diagnostic.config({
     underline = true
 })
 
-local configs = require('lspconfig.configs')
-local util = require('lspconfig.util')
-
-if not configs.helm_ls then
-    configs.helm_ls = {
-        default_config = {
-            cmd = {"helm_ls", "serve"},
-            filetypes = {'helm'},
-            root_dir = function(fname)
-                return util.root_pattern('Chart.yaml')(fname)
-            end
-        }
-    }
-end
-
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
 config.clangd.setup {}
 config.gopls.setup {}
-config.helm_ls.setup {filetypes = {"helm"}, cmd = {"helm_ls", "serve"}}
 config.yamlls.setup {filetypes = {"yaml", "yml"}}
+config.marksman.setup {filetypes = {"markdown"}}
+config.lua_ls.setup(lsp.nvim_lua_ls())
+config.zls.setup({})
+config.hls.setup({filetypes = {'haskell', 'lhaskell', 'cabal'}})
+
+lsp.setup()
