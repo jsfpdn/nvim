@@ -18,6 +18,7 @@ require("lazy").setup({
     "arcticicestudio/nord-vim",
     "tpope/vim-fugitive",
     "lervag/vimtex",
+    "fatih/vim-go",
     {
         "nvim-lualine/lualine.nvim",
         requires = {"nvim-tree/nvim-web-devicons", opt = true}
