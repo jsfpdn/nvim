@@ -9,10 +9,19 @@ require("formatter").setup({
         zig = {require("formatter.filetypes.zig").zigfmt},
         json = {require("formatter.filetypes.json").jq},
         markdown = {require("formatter.filetypes.markdown").prettier},
-        yaml = {require("formatter.filetypes.yaml").yamlfmt},
+        yaml = {
+            require("formatter.filetypes.yaml").yamlfmt, function()
+                return {
+                    exe = "yamlfmt",
+                    args = {"-conf", "~/.config/.yamlfmt", "-in"}
+                }
+            end
+
+        },
         sh = {require("formatter.filetypes.sh").shfmt},
         lua = {require("formatter.filetypes.lua").luaformat},
         haskell = {function() return {exe = "hindent"} end},
+        terraform = {require("formatter.filetypes.terraform").terraformfmt},
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype

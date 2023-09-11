@@ -6,7 +6,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     "gopls", "lua_ls", "jsonls", "marksman", "yamlls", "zls", "bashls",
-    "clangd", "rust_analyzer", "hls"
+    "clangd", "rust_analyzer", "hls", "ocamllsp", "terraform-ls"
 })
 
 local cmp = require("cmp")
@@ -65,18 +65,16 @@ config.marksman.setup {filetypes = {"markdown"}}
 config.lua_ls.setup(lsp.nvim_lua_ls())
 config.zls.setup({})
 config.hls.setup({filetypes = {'haskell', 'lhaskell', 'cabal'}})
+config.terraformls.setup({})
 -- npm i -g vscode-langservers-extracted
 config.eslint.setup({
-  --- ...
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end,
+    --- ...
+    on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre",
+                                    {buffer = bufnr, command = "EslintFixAll"})
+    end
 })
 -- npm install -g typescript typescript-language-server
-config.tsserver.setup{}
-
+config.tsserver.setup {}
 
 lsp.setup()
