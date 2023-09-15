@@ -76,5 +76,6 @@ config.eslint.setup({
 })
 -- npm install -g typescript typescript-language-server
 config.tsserver.setup {}
+config.rust_analyzer.setup {}
 
 lsp.setup()

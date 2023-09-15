@@ -22,6 +22,7 @@ require("formatter").setup({
         lua = {require("formatter.filetypes.lua").luaformat},
         haskell = {function() return {exe = "hindent"} end},
         terraform = {require("formatter.filetypes.terraform").terraformfmt},
+        rust = {require("formatter.filetypes.rust").rustfmt},
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
