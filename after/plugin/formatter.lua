@@ -9,11 +9,13 @@ require("formatter").setup({
         zig = {require("formatter.filetypes.zig").zigfmt},
         json = {require("formatter.filetypes.json").jq},
         markdown = {require("formatter.filetypes.markdown").prettier},
+        -- typescript = {require("formatter.filetypes.typescript").prettier},
         yaml = {
             require("formatter.filetypes.yaml").yamlfmt, function()
                 return {
                     exe = "yamlfmt",
-                    args = {"-conf", "~/.config/.yamlfmt", "-in"}
+                    args = {"-conf", "~/.config/.yamlfmt", "-in"},
+                    stdin = true
                 }
             end
 
@@ -23,6 +25,20 @@ require("formatter").setup({
         haskell = {function() return {exe = "hindent"} end},
         terraform = {require("formatter.filetypes.terraform").terraformfmt},
         rust = {require("formatter.filetypes.rust").rustfmt},
+        python = {require("formatter.filetypes.python").black},
+        ocaml = {
+            require("formatter.filetypes.ocaml").ocamlformat, function()
+                local util = require "formatter.util"
+                return {
+                    exe = "ocamlformat",
+                    args = {
+                        "--enable-outside-detected-project",
+                        util.escape_path(util.get_current_buffer_file_path())
+                    },
+                    stdin = true
+                }
+            end
+        },
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype

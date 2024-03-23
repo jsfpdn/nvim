@@ -4,12 +4,13 @@
 --  * https://github.com/rcarriga/nvim-dap-ui
 --  * https://github.com/theHamsta/nvim-dap-virtual-text
 require("lazy").setup({
+    -- "github/copilot.vim",
     "ryanoasis/vim-devicons",
-    "lewis6991/impatient.nvim",
     "folke/which-key.nvim",
     "folke/neodev.nvim",
     "ThePrimeagen/harpoon",
     "numToStr/Comment.nvim",
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
     "mhartington/formatter.nvim",
     "lewis6991/gitsigns.nvim",
     "dnlhc/glance.nvim",

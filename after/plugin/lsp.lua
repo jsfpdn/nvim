@@ -6,7 +6,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     "gopls", "lua_ls", "jsonls", "marksman", "yamlls", "zls", "bashls",
-    "clangd", "rust_analyzer", "hls", "ocamllsp", "terraform-ls"
+    "clangd", "rust_analyzer", "hls", "ocamllsp", "terraform-ls", "pyright"
 })
 
 local cmp = require("cmp")
@@ -77,5 +77,7 @@ config.eslint.setup({
 -- npm install -g typescript typescript-language-server
 config.tsserver.setup {}
 config.rust_analyzer.setup {}
+config.ocamllsp.setup {}
+config.pyright.setup{}
 
 lsp.setup()
